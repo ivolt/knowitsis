@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?> 
+<grades>
+	<student name="Aike">
+		<topic1>5</topic1>
+		<topic2>4</topic2>
+		<topic3>3</topic3>
+		<topic4>2</topic4>
+		<topic5>2</topic5>
+	</student>
+	<student name="Bike">
+		<topic1>5</topic1>
+		<topic2>4</topic2>
+		<topic3>3</topic3>
+		<topic4>2</topic4>
+		<topic5>2</topic5>
+	</student>
+	<student name="Liike">
+		<topic1>5</topic1>
+		<topic2>4</topic2>
+		<topic3>3</topic3>
+		<topic5>2</topic5>
+	</student>
+	<student name="Pike">
+		<topic1>5</topic1>
+		<topic2>4</topic2>
+		<topic3>2</topic3>
+	</student>
+	<student name="Vike">
+		<topic1>5</topic1>
+		<topic2>4</topic2>
+		<topic3>5</topic3>
+		<topic4>5</topic4>
+		<topic5>2</topic5>
+	</student>
+</grades>
