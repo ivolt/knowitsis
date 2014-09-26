@@ -14,7 +14,7 @@ public class XmlReader {
 	 * 
 	 * @return Document
 	 */
-	public static Document getXml() {
+	public Document getXml() {
 		SAXBuilder saxBuilder = new SAXBuilder();
 		// get file
 		File file = new File("src/main/resources/studentsGrades.xml");

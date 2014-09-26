@@ -11,11 +11,10 @@ public class Calculators {
 	/**
 	 * Calculates the average grade of student
 	 * 
-	 * @param Document
-	 *            studentsGradesDoc
+	 * @param Document studentsGradesDoc
 	 * @return Map<String, Double>
 	 */
-	public static Map<String, Double> studentAverageGradeCalculator(
+	public Map<String, Double> studentAverageGradeCalculator(
 			Document studentsGradesDoc) {
 		Map<String, Double> studentAverageMap = new HashMap<String, Double>();
 		Element studentGradesEl = studentsGradesDoc.getRootElement();
@@ -45,14 +44,16 @@ public class Calculators {
 	 * @param Map<String, Double> studentsAverage
 	 * @return Integer
 	 */
-	public static Double weightedAverageCalculator(
+	public Double weightedAverageCalculator(
 			Map<String, Double> studentsAverage) {
 		Double weightedAverage = 0.0;
 		Double gradesSum = 0.0;
 		Integer studentCount = studentsAverage.size();
+		//Gets the grade SUM
 		for (Map.Entry<String, Double> entry : studentsAverage.entrySet()) {
 			gradesSum = gradesSum + entry.getValue();
 		}
+		//Calculates the average
 		weightedAverage = gradesSum / studentCount;
 		return weightedAverage;
 	}

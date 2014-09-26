@@ -1,9 +1,12 @@
 package weighted_average;
 
-import java.text.DecimalFormat;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.LinkedHashMap;
+import java.util.LinkedList;
+import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Set;
 import java.util.TreeMap;
 
 public class Sorters {
@@ -13,16 +16,36 @@ public class Sorters {
 	 * 
 	 * @param avgStudentGrades
 	 */
-	public static void printStudentListSorted(
+	public Map<String, Double> getSortedStudentList(
 			Map<String, Double> avgStudentGrades) {
-		Map<String, Double> unsortedStudentsMap = new TreeMap<String, Double>(
-				avgStudentGrades);
-		Set<Entry<String, Double>> sortedStudentsSet = unsortedStudentsMap
-				.entrySet();
-		DecimalFormat formatter = new DecimalFormat("#0.0");
-		for (Entry<String, Double> student : sortedStudentsSet) {
-			System.out.println("Student: " + student.getKey()
-							+ " Average grade: "+ formatter.format(student.getValue()));
-		}
+		Map<String, Double> unSortedStudentsMap = new TreeMap<String, Double>(avgStudentGrades);
+		Map<String, Double> sortedStudentsMap = sortByValues(unSortedStudentsMap);
+		return sortedStudentsMap;
 	}
+	
+	
+	/**
+	 * Method to sort Map in Java by value
+     * sort values even if they are duplicates
+     * 
+	 * @param map
+	 * @return map
+	 */
+    @SuppressWarnings("rawtypes")
+	private <K extends Comparable,V extends Comparable> Map<K,V> sortByValues(Map<K,V> map){
+        List<Map.Entry<K,V>> entries = new LinkedList<Map.Entry<K,V>>(map.entrySet());
+        Collections.sort(entries, new Comparator<Map.Entry<K,V>>() {
+            @SuppressWarnings("unchecked")
+			@Override
+            public int compare(Entry<K, V> o1, Entry<K, V> o2) {
+                return o1.getValue().compareTo(o2.getValue());
+            }
+        });
+        //LinkedHashMap will keep the keys in the order they are inserted
+        Map<K,V> sortedMap = new LinkedHashMap<K,V>();
+        for(Map.Entry<K,V> entry: entries){
+            sortedMap.put(entry.getKey(), entry.getValue());
+        }
+        return sortedMap;
+    }
 }
