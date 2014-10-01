@@ -8,6 +8,12 @@
 	<name>knowitsis</name>
 	<url>http://maven.apache.org</url>
 	<dependencies>
+		<!-- Java EE -->
+		<dependency>
+			<groupId>javax</groupId>
+			<artifactId>javaee-api</artifactId>
+			<version>7.0</version>
+		</dependency>
 		<!-- Testing -->
 		<dependency>
 			<groupId>junit</groupId>
@@ -15,14 +21,27 @@
 			<version>4.11</version>
 			<scope>test</scope>
 		</dependency>
-
 		<!-- Document handler -->
 		<dependency>
 			<groupId>org.jdom</groupId>
 			<artifactId>jdom2</artifactId>
 			<version>2.0.5</version>
 		</dependency>
+		<!-- Spring -->
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter</artifactId>
+			<version>1.1.7.RELEASE</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-webmvc</artifactId>
+			<version>4.1.0.RELEASE</version>
+		</dependency>
+
+
 	</dependencies>
+
 
 	<build>
 		<finalName>knowitsis</finalName>
