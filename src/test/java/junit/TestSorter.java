@@ -8,7 +8,7 @@ import java.util.Map.Entry;
 
 import org.junit.Test;
 
-import weighted_average.Sorters;
+import weighted_average_console.Sorters;
 
 public class TestSorter {
 	private Sorters sorters = new Sorters();

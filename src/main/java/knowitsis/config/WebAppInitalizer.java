@@ -1,4 +1,4 @@
-package config;
+package knowitsis.config;
 
 import javax.servlet.ServletContext;  
 import javax.servlet.ServletException;  
@@ -11,8 +11,11 @@ import org.springframework.web.servlet.DispatcherServlet;
 public class WebAppInitalizer implements WebApplicationInitializer {
 	public void onStartup(ServletContext servletContext) throws ServletException {  
         AnnotationConfigWebApplicationContext ctx = new AnnotationConfigWebApplicationContext();  
+        
         ctx.register(AppConfig.class);  
-        ctx.setServletContext(servletContext);    
+        ctx.setServletContext(servletContext);
+        ctx.refresh();
+        
         Dynamic dynamic = servletContext.addServlet("dispatcher", new DispatcherServlet(ctx));  
         dynamic.addMapping("/");  
         dynamic.setLoadOnStartup(1);  

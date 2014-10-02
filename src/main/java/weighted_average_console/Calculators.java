@@ -1,4 +1,4 @@
-package service;
+package weighted_average_console;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,20 +6,18 @@ import java.util.Map;
 
 import org.jdom2.Document;
 import org.jdom2.Element;
-import org.springframework.stereotype.Component;
 
-@Component
-public class CalculatorService implements ICalculatorService {
-	
+public class Calculators {
 	/**
 	 * Calculates the average grade of student
 	 * 
 	 * @param Document studentsGradesDoc
 	 * @return Map<String, Double>
 	 */
-	public Map<String, Double> getStudentAverageGrade(Document inputGrades) {
+	public Map<String, Double> studentAverageGradeCalculator(
+			Document studentsGradesDoc) {
 		Map<String, Double> studentAverageMap = new HashMap<String, Double>();
-		Element studentGradesEl = inputGrades.getRootElement();
+		Element studentGradesEl = studentsGradesDoc.getRootElement();
 		List<Element> students = studentGradesEl.getChildren("student");
 		// Goes through students list
 		for (Element student : students) {
@@ -39,14 +37,15 @@ public class CalculatorService implements ICalculatorService {
 		}
 		return studentAverageMap;
 	}
-	
+
 	/**
 	 * Calculates the average grade of all students
 	 * 
 	 * @param Map<String, Double> studentsAverage
 	 * @return Integer
 	 */
-	public Double weightedAverageCalculator(Map<String, Double> studentsAverage) {
+	public Double weightedAverageCalculator(
+			Map<String, Double> studentsAverage) {
 		Double weightedAverage = 0.0;
 		Double gradesSum = 0.0;
 		Integer studentCount = studentsAverage.size();

@@ -9,7 +9,7 @@ import org.jdom2.Document;
 import org.jdom2.Element;
 import org.junit.Test;
 
-import weighted_average.Calculators;
+import weighted_average_console.Calculators;
 
 public class TestCalculator {
 	private Calculators calculators = new Calculators();

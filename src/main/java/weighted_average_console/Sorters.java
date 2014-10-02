@@ -1,4 +1,4 @@
-package weighted_average;
+package weighted_average_console;
 
 import java.util.Collections;
 import java.util.Comparator;

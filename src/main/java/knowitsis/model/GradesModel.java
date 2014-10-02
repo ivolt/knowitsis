@@ -1,4 +1,4 @@
-package model;
+package knowitsis.model;
 
 import org.jdom2.Document;
 
