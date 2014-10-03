@@ -1,6 +1,7 @@
-<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
-	pageEncoding="ISO-8859-1"%>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -8,40 +9,41 @@
 <title></title>
 </head>
 <body>
-<div id="menu" style="background-color:#F5F5F5;width:150px;margin-bottom:auto;height:410px;float:left;">
+	<h3>
+		Press calculate putton to get the weighted average or <br /> press
+		sort button to get the student list sorted
+	</h3>
+	
 
-<b>Menu</b><br>
-<a href="/knowitsis">Start page</a><br>
-<a href="upload">Amet</a><br>
-<a href="calculator">Ametid Väeosas</a><br>
-</div>
-	<h3>${message}</h3>
+	<form:form method="POST">
+		<table>
+			<tr>
+				<input type="submit" name="calc" value="Calculate">
+				<input type="submit" name="sort" value="Sort">
+			</tr>
+			<tr>
+				<td>
+					${weighted}
+					<table border="1">
+						<tr>
+							<td>Student Names :</td>
+							<td>Student Average Grade</td>
+						</tr>
+						<tr>
+							<c:forEach items="${studentMap}" var="entry">
+							    <tr>
+							    <td>${entry.key}</td>
+							    <td>${entry.value}</td>
+							    </tr>
+							</c:forEach>
+						</tr>
 
-	<form:form method="post" commandName="upload" action="uploadNewFile"
-		enctype="multipart/form-data">
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<td><label>File</label></td>
-					<td><input id="file" class="form-control" name="file"
-						type="file" /></td>
-				</tr>
-				<tr>
-					<td colspan="2"><input class="btn btn-primary" type="submit"
-						value="Upload" /></td>
-				</tr>
-			</tbody>
+					</table>
+
+				</td>
+			</tr>
 		</table>
 	</form:form>
-
-	<form:form method="post" commandName="calcweighted" action="calculateWithTestData">
-		<table class="table table-bordered">
-			<tbody>
-				<tr>
-					<td colspan="3"><input type="submit" value="Calculate" /></td>
-				</tr>
-			</tbody>
-		</table>
-	</form:form>
+</BODY>
 </body>
 </html>

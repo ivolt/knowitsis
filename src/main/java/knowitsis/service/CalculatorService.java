@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import knowitsis.service.interfaces.ICalculatorService;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.springframework.stereotype.Component;
@@ -35,7 +37,7 @@ public class CalculatorService implements ICalculatorService {
 			// Calculate the average grade of student
 			Double averageGrade = grade.doubleValue()
 					/ topicsNumber.doubleValue();
-			studentAverageMap.put(studentName, averageGrade);
+			studentAverageMap.put(studentName, Math.round(averageGrade*10.0)/10.0);
 		}
 		return studentAverageMap;
 	}

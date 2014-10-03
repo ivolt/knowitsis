@@ -1,4 +1,4 @@
-package knowitsis.service;
+package knowitsis.service.interfaces;
 
 import java.util.Map;
 
