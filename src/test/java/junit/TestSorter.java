@@ -6,12 +6,15 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import org.junit.Test;
+import knowitsis.service.SorterService;
+import knowitsis.service.interfaces.ISorterService;
 
-import weighted_average_console.Sorters;
+import org.junit.Test;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestSorter {
-	private Sorters sorters = new Sorters();
+	@Autowired
+	private ISorterService sorterService = new SorterService();
 
 	@Test(timeout = 1000)
 	public void sorterTest() {
@@ -21,7 +24,7 @@ public class TestSorter {
 		testStudendsAverageMap.put("AB", 3.7);
 		testStudendsAverageMap.put("ZA", 4.5);
 		testStudendsAverageMap.put("AA", 4.0);
-		Map<String, Double> resultMap = sorters.getSortedStudentList(testStudendsAverageMap);
+		Map<String, Double> resultMap = sorterService.getSortedStudentList(testStudendsAverageMap);
 		String resultString = "";
 		for (Entry<String, Double> testStudent : resultMap.entrySet()) {
 			resultString = resultString + " " +testStudent.getKey() + testStudent.getValue();

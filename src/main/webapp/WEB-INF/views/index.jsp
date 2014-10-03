@@ -13,37 +13,40 @@
 		Press calculate putton to get the weighted average or <br /> press
 		sort button to get the student list sorted
 	</h3>
-	
-
 	<form:form method="POST">
+		<div>
+			<input type="submit" name="calc" value="Calculate">
+			<input type="submit" name="sort" value="Sort">
+		</div>
 		<table>
-			<tr>
-				<input type="submit" name="calc" value="Calculate">
-				<input type="submit" name="sort" value="Sort">
-			</tr>
-			<tr>
-				<td>
-					${weighted}
+			<c:choose>
+				<c:when test="${param.sort == 'Sort'}">
 					<table border="1">
 						<tr>
-							<td>Student Names :</td>
+							<td>Student Names</td>
 							<td>Student Average Grade</td>
 						</tr>
 						<tr>
 							<c:forEach items="${studentMap}" var="entry">
-							    <tr>
-							    <td>${entry.key}</td>
-							    <td>${entry.value}</td>
-							    </tr>
+								<tr>
+									<td>${entry.key}</td>
+									<td>${entry.value}</td>
+								</tr>
 							</c:forEach>
 						</tr>
-
 					</table>
-
-				</td>
-			</tr>
+				</c:when>
+				<c:when test="${param.calc == 'Calculate'}">
+					<tr>
+						<td>Student Weighted average grade:</td>
+						<td>${weighted}</td>
+					</tr>
+				</c:when>
+				<c:otherwise></c:otherwise>
+			</c:choose>
 		</table>
 	</form:form>
-</BODY>
 </body>
 </html>
+
+

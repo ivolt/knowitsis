@@ -5,14 +5,17 @@ import static org.junit.Assert.*;
 import java.util.HashMap;
 import java.util.Map;
 
+import knowitsis.service.CalculatorService;
+import knowitsis.service.interfaces.ICalculatorService;
+
 import org.jdom2.Document;
 import org.jdom2.Element;
 import org.junit.Test;
-
-import weighted_average_console.Calculators;
+import org.springframework.beans.factory.annotation.Autowired;
 
 public class TestCalculator {
-	private Calculators calculators = new Calculators();
+	@Autowired
+	ICalculatorService calculatorService = new CalculatorService();
 	private String name;
 	private String grade1;
 	private String grade2;
@@ -32,7 +35,7 @@ public class TestCalculator {
 		grade4 = "4";
 		Element testStudent = getTestStudent(name, grade1, grade2, grade3, grade4);
 		Document studentTestDoc = new Document(testStudent);
-		Map<String, Double> resultMap = calculators.studentAverageGradeCalculator(studentTestDoc);
+		Map<String, Double> resultMap = calculatorService.getStudentAverageGrade(studentTestDoc);
 		for (Map.Entry<String, Double> testStudentsMap : resultMap.entrySet()) {
 			nameFromMap = testStudentsMap.getKey();
 			avgGradeFromMap = testStudentsMap.getValue();
@@ -54,7 +57,7 @@ public class TestCalculator {
 		grade4 = "3";
 		Element testStudent = getTestStudent(name, grade1, grade2, grade3, grade4);
 		Document testStudentDoc = new Document(testStudent);
-		Map<String, Double> resultMap = calculators.studentAverageGradeCalculator(testStudentDoc);
+		Map<String, Double> resultMap = calculatorService.getStudentAverageGrade(testStudentDoc);
 		for (Map.Entry<String, Double> testStudentsMap : resultMap.entrySet()) {
 			nameFromMap = testStudentsMap.getKey();
 			avgGradeFromMap = testStudentsMap.getValue();
@@ -73,7 +76,7 @@ public class TestCalculator {
 		testStudentAverageMap.put("student 3", 4.5);
 		testStudentAverageMap.put("student 4", 5.0);
 		testStudentAverageMap.put("student 5", 3.0);
-		result = calculators.weightedAverageCalculator(testStudentAverageMap);
+		result = calculatorService.weightedAverageCalculator(testStudentAverageMap);
 		assertTrue(result == 4.3);
 	}
 	
@@ -87,7 +90,7 @@ public class TestCalculator {
 		testStudentAverageMap.put("student 3", 4.0);
 		testStudentAverageMap.put("student 4", 4.0);
 		testStudentAverageMap.put("student 5", 4.0);
-		result = calculators.weightedAverageCalculator(testStudentAverageMap);
+		result = calculatorService.weightedAverageCalculator(testStudentAverageMap);
 		assertTrue(result == 4.0);
 	}
 	
